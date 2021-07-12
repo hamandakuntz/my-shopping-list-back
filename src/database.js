@@ -3,11 +3,11 @@ import pg from "pg";
 const { Pool } = pg;
 
 const connection = new Pool({
-  user: "bootcamp_role",
-  password: "senha_super_hiper_ultra_secreta_do_role_do_bootcamp",
+  user: "postgres",
+  password: "123456",
   host: "localhost",
   port: 5432,
-  database: "my_shopping_list"
+  database: "shoppinglist"
 });
 
 export default connection;
