@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import joi from "joi";
 
 import connection from "./database.js";
 
@@ -17,6 +18,16 @@ app.post("/items", async (req, res) => {
         INSERT INTO items (item)
         VALUES $1`, [item]);
         res.sendStatus(201);
+    } catch (e) {
+        res.sendStatus(500);
+    }
+});
+
+app.get("/items", async (req, res) => {
+    try {               
+        const shoppingList = await connection.query(`
+        SELECT * FROM items`);
+        res.send(shoppingList);
     } catch (e) {
         res.sendStatus(500);
     }
